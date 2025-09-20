@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阿橙的整活日常 | 生活需要点笑声</title>
+    <style>
+        /* === 基础重置与变量定义 === */
+        :root {
+            --bg-dark: #121212;
+            --card-bg: #1e1e1e;
+            --text-primary: #e0e0e0;
+            --text-secondary: #a0a0a0;
+            --accent-orange: #ff7b25;
+            --accent-orange-glow: 0 0 10px rgba(255, 123, 37, 0.7);
+            --border-radius: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 0;
+            margin: 0;
+        }
+
+        a {
+            color: var(--accent-orange);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            text-shadow: var(--accent-orange-glow);
+        }
+
+        /* === 布局样式 === */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* === 头部导航 === */
+        header {
+            background-color: rgba(30, 30, 30, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #333;
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .site-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .site-title a {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, #ff7b25, #ffaa00);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
+        .site-nav a {
+            margin-left: 1.5rem;
+            font-weight: 500;
+        }
+
+        /* === 英雄区 === */
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ff7b25, #ffaa00);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* === 主要内容区布局 === */
+        .main-content {
+            display: grid;
+            grid-template-columns: 7fr 3fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        /* === 文章列表 === */
+        .post-list {
+            list-style: none;
+        }
+
+        .post-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-left: 4px solid transparent;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .post-card:hover {
+            transform: translateY(-5px);
+            border-left-color: var(--accent-orange);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .post-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .post-title a {
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .post-title a:hover {
+            color: var(--accent-orange);
+            text-decoration: none;
+        }
+
+        .post-meta {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .post-excerpt {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .read-more {
+            display: inline-block;
+            font-weight: bold;
+            color: var(--accent-orange);
+        }
+
+        .tags {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            background: rgba(255, 123, 37, 0.2);
+            color: var(--accent-orange);
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        /* === 侧边栏 === */
+        .sidebar {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+
+        .sidebar-widget {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .sidebar-widget h3 {
+            color: var(--accent-orange);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #333;
+        }
+
+        .about-me {
+            text-align: center;
+        }
+
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid var(--accent-orange);
+            margin: 0 auto 1rem;
+            background: linear-gradient(45deg, #ff7b25, #ffaa00);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: #1e1e1e;
+        }
+
+        .category-list, .recent-posts {
+            list-style: none;
+        }
+
+        .category-list li, .recent-posts li {
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #333;
+        }
+
+        .category-list li:last-child, .recent-posts li:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        /* === 页脚 === */
+        footer {
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 3rem;
+            color: var(--text-secondary);
+            border-top: 1px solid #333;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        /* === 响应式设计 === */
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .site-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .site-nav {
+                margin-top: 1rem;
+            }
+
+            .site-nav a {
+                margin: 0 0.5rem;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .post-card, .sidebar-widget {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container site-header">
+            <h1 class="site-title"><a href="index.html">阿橙的整活日常</a></h1>
+            <nav class="site-nav">
+                <a href="index.html">首页</a>
+                <a href="about.html">关于我</a>
+                <a href="article.html">文章</a>
+                <a href="contact.html">联系我</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="hero">
+            <h2>生活这么苦，不如来点笑料</h2>
+            <p>记录日常生活中的搞笑瞬间、整活实验和那些让人哭笑不得的意外发现</p>
+        </section>
+
+        <div class="main-content">
+            <main class="content">
+                <h2 style="margin-bottom: 1.5rem; color: var(--accent-orange);">精选文章</h2>
+                <ul class="post-list">
+                    <li class="post-card">
+                        <h3 class="post-title"><a href="post.html">我们的制裁马卡龙日常</a></h3>
+                        <div class="post-meta">
+                            <span>2025-9-19</span>
+                            <span>阅读量: 2,345</span>
+                        </div>
+                        <p class="post-excerpt">事情是这样的，我们的马卡龙打呼噜了，吵得宿舍鸡犬不宁，所以为了维护正义我们开启了以下计划...</p>
+                        <div class="tags">
+                            <span class="tag">猫奴日常</span>
+                            <span class="tag">科技整活</span>
+                            <span class="tag">搞笑</span>
+                        </div>
+                        <a href="post.html" class="read-more">继续阅读 →</a>
+                    </li>
+
+                    <li class="post-card">
+                        <h3 class="post-title"><a href="post2.html">用外卖APP点了份"空气套餐"，商家居然真的送来了</a></h3>
+                        <div class="post-meta">
+                            <span>2023-11-25</span>
+                        </div>
+                        <p class="post-excerpt">看到外卖平台上有个0.01元的"惊喜盲盒"，描述写着"可能是任何东西"。出于强烈的好奇心，我下单了。然后...我真的收到了一个空盒子。</p>
+                        <div class="tags">
+                            <span class="tag">生活实验</span>
+                            <span class="tag">外卖奇遇</span>
+                            <span class="tag">沙雕</span>
+                        </div>
+                        <a href="post2.html" class="read-more">阅读更多 →</a>
+                    </li>
+
+                    <li class="post-card">
+                        <h3 class="post-title"><a href="post3.html">如何将我们的马金辰马卡龙完成进化</a></h3>
+                        <div class="post-meta">
+                            <span>2023-11-05</span>
+                        </div>
+                        <p class="post-excerpt">如何将我们的马金辰马卡龙完成进化。从“甜品”到“史诗级生物”的完整指南</p>
+                        <div class="tags">
+                            <span class="tag">个人实验</span>
+                            <span class="tag">进化</span>
+                            <span class="tag">马卡龙</span>
+                        </div>
+                        <a href="post1.htm" class="read-more">阅读更多 →</a>
+                    </li>
+                </ul>
+            </main>
+
+            <aside class="sidebar">
+                <div class="sidebar-widget about-me">
+                    <img src="image/avatar.png" alt="我的头像">
+                    <h3>关于我</h3>
+                    <p>人称Find1134，专业整活业余选手。坚信生活需要笑声，致力于在平凡日常中发现不平凡的快乐。</p>
+                    <p>特长：把简单事情复杂化，把严肃事情搞笑化。</p>
+                </div>
+
+                <div class="sidebar-widget">
+                    <h3>分类标签</h3>
+                    <ul class="category-list">
+                        <li><a href="#">整活日常 (2)</a></li>
+                        <li><a href="#">生活实验 (1)</a></li>
+                        <li><a href="#">外卖奇遇 (5)</a></li>
+                        <li><a href="#">社交尴尬时刻 (7)</a></li>
+                        <li><a href="#">DIY失败记录 (9)</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-widget">
+                    <h3>热门整活</h3>
+                    <ul class="recent-posts">
+                        <li><a href="#">在电梯里假装认识每个人</a></li>
+                        <li><a href="#">用表情包和Siri吵架一小时</a></li>
+                        <li><a href="#">给植物播放死亡金属的结果</a></li>
+                        <li><a href="#">试图用意念煮泡面</a></li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="#">微博</a>
+                <a href="#">小红书</a>
+                <a href="#">B站</a>
+                <a href="#">抖音</a>
+            </div>
+            <p>© 2025 Find1134的整活日常 | 生活需要点笑声</p>
+            <p>本站内容纯属娱乐，请勿模仿（除非你也想整活）</p>
+        </div>
+    </footer>
+</body>
+</html>
